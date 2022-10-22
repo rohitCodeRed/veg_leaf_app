@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^14.2.5",
     "@angular/common": "^14.0.0",
     "@angular/core": "^14.0.0",
     "@angular/forms": "^14.0.0",
@@ -20,12 +21,15 @@
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
     "@capacitor/app": "4.0.1",
+    "@capacitor/camera": "^4.1.2",
     "@capacitor/core": "4.3.0",
     "@capacitor/haptics": "4.0.1",
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/status-bar": "4.0.1",
     "@ionic/angular": "^6.1.9",
+    "chart.js": "^3.9.1",
     "ionicons": "^6.0.3",
+    "ng2-charts": "^4.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

@@ -1,0 +1,22 @@
+
+ion-content {
+    position: absolute;
+    top: 18%;
+    left: 0%;
+    right: 0%;
+    margin: 0 auto;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+
+.img-flex-container{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content:center;
+    align-items: center;
+}
+
+.imgShow > div{
+    align-self: center;
+}
