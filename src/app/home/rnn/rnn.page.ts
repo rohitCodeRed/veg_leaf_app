@@ -15,6 +15,10 @@ const units={
     "wheat_price":"Wheat Price(rs per quintal/10)"
 };
 
+const COLORS=['#4572A7', '#AA4643', '#89A54E', '#80699B', '#3D96AE',
+'#DB843D', '#92A8CD', '#A47D7C', '#B5CA92'];
+const backGroundColors=['rgba(69,114,167,0.2)','rgba(170,70,67,0.2)','rgba(137,165,78,0.2)','rgba(128,105,155,0.2)','rgba(61,150,174,0.2)','rgba(219,132,61,0.2)'];
+
 const X_AXIS='year';
 //const Y_AXIS='wheat_price'
 
@@ -35,7 +39,16 @@ export class RnnPage implements OnInit {
     datasets: []
   };
   public lineChartOptions: ChartOptions<'line'> = {
-    responsive: true
+    responsive: true,
+    plugins: {
+      legend: {
+          display: true,
+          position:'bottom',
+          labels: {
+              boxHeight:1
+          }
+      }
+    }
   };
   public lineChartLegend = true;
 
@@ -79,7 +92,7 @@ export class RnnPage implements OnInit {
     chartData.labels = data[labelKey].map(function (x) { 
       return parseInt(x); 
     });
-
+    let i = 0;
     for (let key in data){
       //console.log(index);
       if(key !== labelKey){
@@ -106,10 +119,13 @@ export class RnnPage implements OnInit {
         }
         obj['label']=units[key]
         obj['fill']= true;
-        obj['tension']= 0.3,
-        obj['borderColor']= 'black',
-        obj['backgroundColor']= 'rgba(255,0,0,0.2)'
+        obj['tension']= 0.4,
+        obj['borderWidth'] = 1
+        obj['pointRadius']= 2
+        obj['borderColor']= COLORS[i],
+        obj['backgroundColor']= backGroundColors[i];
 
+        i++;
         chartData.datasets.push(obj);
       }
     }
