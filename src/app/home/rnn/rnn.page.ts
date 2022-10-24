@@ -4,6 +4,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { RnnService } from './rnn.service';
 import { AlertController, LoadingController, SegmentChangeEventDetail } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { wheat_price_data } from 'src/app/shared/wheat_price_data';
 
 const units={
     "year":"YYYY",
@@ -157,8 +158,9 @@ export class RnnPage implements OnInit {
     this.chart.chart.update();
   }
 
-  onFilterUpdate(event: CustomEvent<SegmentChangeEventDetail>) {
-    this.segVal = event.toString();
+  onFilterUpdate(event:any) {
+    //console.log(event);
+    this.segVal = event.detail.value.toString();
     if (this.segVal  === 'availData') {
       this.loadData();
     } 
@@ -183,7 +185,9 @@ export class RnnPage implements OnInit {
         error =>{
           this.isLoading = false;
           loadingEl.dismiss();
-          this.showAlert('An error ocurred!',JSON.stringify(error.error));
+          this.inData = this.generateData(wheat_price_data.data,X_AXIS);
+          this.updateChart(this.inData['datasets'],this.inData['labels']);
+          //this.showAlert('An error ocurred!',JSON.stringify(error.error));
         });
       });
   }

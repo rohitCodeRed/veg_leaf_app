@@ -27,11 +27,11 @@ export class CnnPage implements OnInit {
     private loadingCtrl:LoadingController,
     private alertCtrl: AlertController) { }
 
-  onFilterUpdate(event: CustomEvent<SegmentChangeEventDetail>) {
-    console.log(event)
-    this.segVal = event.toString();
+  onFilterUpdate(event:any) {
+    //console.log(event)
+    this.segVal = event.detail.value.toString();
     if (this.segVal  === 'classifyLeaf') {
-      
+      this.isLoading=false;
     } else {
       this.isLoading=true;
       this.cnnService.vegetableLeafs().subscribe(data=>{

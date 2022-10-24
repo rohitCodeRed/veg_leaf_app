@@ -15,13 +15,11 @@ export class RnnService {
   constructor(private authService: AuthService,private http:HttpClient) { }
 
   wheatPriceData(){
-    let dataUrl ='/predict_wheat_price'
+    let dataUrl = "/predict_wheat_price" //'/predict_wheat_price' //'/get_csv_data'
     let url = environment.serverUrl + dataUrl
     const httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json','Authorization':`JWT ${this.authService.getToken()}`})};
 
-    return this.http.get<any>(url,httpOptions).pipe(tap(resData =>{
-      //console.log("csv data",resData);
-    }));
+    return this.http.get<any>(url);
     
   }
 

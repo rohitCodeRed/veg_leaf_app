@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment (ionChange)="onFilterUpdate($event.detail.value)" value="availData">
+  <ion-segment (ionChange)="onFilterUpdate($event)" [(ngModel)]="segVal" value="availData">
     <ion-segment-button value="availData">Available Data</ion-segment-button>
     <ion-segment-button value="predPrice">Predict Price</ion-segment-button>
   </ion-segment>
