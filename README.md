@@ -26,6 +26,6 @@ serverUrl: "http://< IP assign by Router/modem >:4000"
 * npx cap open android  #-> Open android project in Android studio..
 
 
-### For mere detail, please visit my medium page: 
+### For mere detail, please visit my medium page: https://medium.com/@alwaysHopeGood/veg-leaf-ai-53d657c257bb
 
 
