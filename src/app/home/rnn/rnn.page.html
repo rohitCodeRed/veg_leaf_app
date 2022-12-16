@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reg Nueral Network</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment (ionChange)="onFilterUpdate($event)" [(ngModel)]="segVal" value="availData">
+    <ion-segment-button value="availData">Available Data</ion-segment-button>
+    <ion-segment-button value="predPrice">Predict Price</ion-segment-button>
+  </ion-segment>
+
+  <ion-grid *ngIf="!isLoading && segVal === 'availData'">
+    <ion-row>
+      <ion-col size="12" size-md="8" offset-md="2">
+        <canvas baseChart width="360" height="400" #chart
+        [type]="'line'"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend">
+      </canvas>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="!isLoading && segVal === 'predPrice'">
+    <form [formGroup]="form">
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Average Temperature(celcius)</ion-label>
+            <ion-input
+              type="text"
+              formControlName="avTemp"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Rainfall(mm)</ion-label>
+            <ion-input type="text" formControlName="rainfall"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Crude Oil($ per Barrel)</ion-label>
+            <ion-input type="text" formControlName="crudPrice"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">wheat Produce(metric ton)</ion-label>
+            <ion-input type="text" formControlName="wheatProduce"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Inflation(%)</ion-label>
+            <ion-input type="text" formControlName="inflation"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </form>
+
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-button
+          fill="outline"
+          shape="round"
+          color="primary" (click)="predictPrice()">
+          Predict wheat Price
+        </ion-button>
+        <ion-button
+          fill="clear" (click)="resetForm()">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col> 
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
